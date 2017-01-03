@@ -1,5 +1,6 @@
 package com.yxj.mvpsample.login;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,9 +13,12 @@ import android.widget.Toast;
 
 import com.yxj.mvpsample.R;
 import com.yxj.mvpsample.bean.ResultBean;
+import com.yxj.mvpsample.home.HomeActivity;
 import com.yxj.mvpsample.register.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView, View.OnClickListener {
+
+    private static final int REQEUST_CODE_REGISTER = 0x11;
 
     private EditText etPwd;
     private EditText etAccount;
@@ -44,17 +48,17 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
 
     @Override
     public void login(String account, String pwd) {
-        mLoginPresenter.login(account,pwd);
+        mLoginPresenter.login(account, pwd);
     }
 
     @Override
     public void loginSucceed(ResultBean result) {
-        Toast.makeText(this,result.getMsg(),Toast.LENGTH_SHORT).show();
+        intoHomeActivity();
     }
 
     @Override
     public void loginFailed(ResultBean result) {
-        Toast.makeText(this,result.getMsg(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, result.getMsg(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -69,18 +73,38 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btnLogin:
-                if(!TextUtils.isEmpty(etAccount.getText()) && !TextUtils.isEmpty(etPwd.getText())){
-                    login(etAccount.getText().toString(),etPwd.getText().toString());
-                }else{
-                    Toast.makeText(this,R.string.login_login_text_error,Toast.LENGTH_SHORT).show();
+                if (!TextUtils.isEmpty(etAccount.getText()) && !TextUtils.isEmpty(etPwd.getText())) {
+                    login(etAccount.getText().toString(), etPwd.getText().toString());
+                } else {
+                    Toast.makeText(this, R.string.login_login_text_error, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.tvRegister:
-                startActivity(RegisterActivity.newIntent(LoginActivity.this));
+                startActivityForResult(RegisterActivity.newIntent(LoginActivity.this),REQEUST_CODE_REGISTER);
                 break;
         }
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQEUST_CODE_REGISTER){
+            switch (resultCode){
+                case RESULT_OK:
+                    intoHomeActivity();
+                    break;
+                case RESULT_CANCELED:
+                    break;
+            }
+        }
+    }
+
+    private void intoHomeActivity() {
+        finish();
+        startActivity(HomeActivity.newIntent(this));
+    }
+
 }

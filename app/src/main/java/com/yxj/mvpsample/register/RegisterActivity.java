@@ -138,6 +138,7 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
     @Override
     public void registerSuccess(ResultBean result) {
         // 回到登录页
+        setResult(RESULT_OK);
         finish();
     }
 
