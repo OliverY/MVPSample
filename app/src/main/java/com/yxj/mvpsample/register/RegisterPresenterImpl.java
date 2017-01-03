@@ -1,7 +1,5 @@
 package com.yxj.mvpsample.register;
 
-import android.text.TextUtils;
-
 import com.yxj.mvpsample.bean.ResultBean;
 
 import org.json.JSONException;
