@@ -7,8 +7,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.yxj.mvpsample.R;
+import com.yxj.mvpsample.bean.ResultBean;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements ILoginView{
 
     private EditText etPwd;
     private EditText etAccount;
@@ -25,6 +26,31 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.btnLogin);
         progress = (ProgressBar) findViewById(R.id.progress);
 
+
+    }
+
+    @Override
+    public void login(String account, String pwd) {
+
+    }
+
+    @Override
+    public void loginSucceed(ResultBean result) {
+
+    }
+
+    @Override
+    public void loginFailed(ResultBean result) {
+
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void dismissProgress() {
 
     }
 }
