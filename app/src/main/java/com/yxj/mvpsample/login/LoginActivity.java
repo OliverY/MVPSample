@@ -2,6 +2,7 @@ package com.yxj.mvpsample.login;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,7 +12,7 @@ import android.widget.Toast;
 import com.yxj.mvpsample.R;
 import com.yxj.mvpsample.bean.ResultBean;
 
-public class LoginActivity extends AppCompatActivity implements ILoginView{
+public class LoginActivity extends AppCompatActivity implements ILoginView, View.OnClickListener {
 
     private EditText etPwd;
     private EditText etAccount;
@@ -29,6 +30,8 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
         etPwd = (EditText) findViewById(R.id.etPwd);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         progress = (ProgressBar) findViewById(R.id.progress);
+
+        btnLogin.setOnClickListener(this);
 
         // 如何去操作P层，实现V——>P的操作？持有Presenter的引用
         mLoginPresenter = new LoginPresenterImpl(this);
@@ -57,5 +60,19 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
     @Override
     public void dismissProgress() {
         progress.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnLogin:
+                if(!TextUtils.isEmpty(etAccount.getText()) && !TextUtils.isEmpty(etPwd.getText())){
+                    login(etAccount.getText().toString(),etPwd.getText().toString());
+                }else{
+                    Toast.makeText(this,"请填写账号和密码",Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+
     }
 }

@@ -3,6 +3,7 @@ package com.yxj.mvpsample.bean;
 import org.json.JSONObject;
 
 /**
+ * 模拟网络数据返回类
  * Created by yxj on 17/1/3.
  */
 
