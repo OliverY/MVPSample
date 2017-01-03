@@ -58,4 +58,9 @@ public class RegisterPresenterImpl implements IRegisterPrestener {
             }
         });
     }
+
+    @Override
+    public void onDestory() {
+        model.onDestory();
+    }
 }

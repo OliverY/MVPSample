@@ -102,9 +102,14 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mLoginPresenter.onDestory();
+    }
+
     private void intoHomeActivity() {
         finish();
         startActivity(HomeActivity.newIntent(this));
     }
-
 }

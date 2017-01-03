@@ -232,5 +232,6 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
         if (handler != null && runnable != null) {
             handler.removeCallbacks(runnable);
         }
+        presenter.onDestory();
     }
 }

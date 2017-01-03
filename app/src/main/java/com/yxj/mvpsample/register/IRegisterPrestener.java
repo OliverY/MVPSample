@@ -9,4 +9,6 @@ public interface IRegisterPrestener {
     void sendVerify();
 
     void register(String phone,String verify);
+
+    void onDestory();
 }

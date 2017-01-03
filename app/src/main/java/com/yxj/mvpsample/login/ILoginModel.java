@@ -19,4 +19,6 @@ public interface ILoginModel {
     }
 
     void login(String account,String pwd,Callback callback);
+
+    void onDestory();
 }

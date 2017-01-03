@@ -21,4 +21,6 @@ public interface IRegisterModel {
     void sendVerify(SendVerifyCallback callback);
 
     void register(String phone,String verify,RegisterCallback callback);
+
+    void onDestory();
 }

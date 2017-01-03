@@ -18,4 +18,9 @@ public interface ILoginPresenter {
      * @param pwd
      */
     void login(String account,String pwd);
+
+    /**
+     * 这是为了model，presenter中的多线程在界面销毁时销毁，防止内存泄漏
+     */
+    void onDestory();
 }

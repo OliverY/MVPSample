@@ -39,4 +39,9 @@ public class LoginPresenterImpl implements ILoginPresenter {
             }
         });
     }
+
+    @Override
+    public void onDestory() {
+        mLoginModel.onDestory();
+    }
 }
