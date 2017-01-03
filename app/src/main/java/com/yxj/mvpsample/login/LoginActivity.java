@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
                 if(!TextUtils.isEmpty(etAccount.getText()) && !TextUtils.isEmpty(etPwd.getText())){
                     login(etAccount.getText().toString(),etPwd.getText().toString());
                 }else{
-                    Toast.makeText(this,"请填写账号和密码",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,R.string.login_text_error,Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
