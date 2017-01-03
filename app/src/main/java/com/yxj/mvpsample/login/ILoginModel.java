@@ -1,12 +1,13 @@
 package com.yxj.mvpsample.login;
 
+import com.yxj.mvpsample.basemvp.IModel;
 import com.yxj.mvpsample.bean.ResultBean;
 
 /**
  * Created by yxj on 17/1/3.
  */
 
-public interface ILoginModel {
+public interface ILoginModel extends IModel{
 
     /*
      * Model层定义的方法是什么?

@@ -1,12 +1,13 @@
 package com.yxj.mvpsample.register;
 
+import com.yxj.mvpsample.basemvp.IView;
 import com.yxj.mvpsample.bean.ResultBean;
 
 /**
  * Created by yxj on 17/1/3.
  */
 
-public interface IRegisterView {
+public interface IRegisterView extends IView{
 
     void sendVerify();
 

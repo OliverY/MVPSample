@@ -1,10 +1,12 @@
 package com.yxj.mvpsample.login;
 
+import com.yxj.mvpsample.basemvp.IPresenter;
+
 /**
  * Created by yxj on 17/1/3.
  */
 
-public interface ILoginPresenter {
+public interface ILoginPresenter extends IPresenter{
 
     /*
     Presenter抽象类中应该定义些什么方法？
