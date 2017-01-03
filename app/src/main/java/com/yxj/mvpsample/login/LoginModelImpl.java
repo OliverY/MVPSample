@@ -2,6 +2,7 @@ package com.yxj.mvpsample.login;
 
 import android.os.Handler;
 
+import com.yxj.mvpsample.TestData;
 import com.yxj.mvpsample.bean.ResultBean;
 
 import org.json.JSONObject;
@@ -21,7 +22,7 @@ public class LoginModelImpl implements ILoginModel {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if("yxj".equals(account) && "123".equals(pwd)) {
+                if(TestData.PHONE_NUM.equals(account) && TestData.VERIFY.equals(pwd)) {
                     callback.onSucceed(resultSuccess);
                 }else{
                     callback.onFailed(resultFailed);

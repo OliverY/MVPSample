@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.yxj.mvpsample.R;
+import com.yxj.mvpsample.TestData;
 import com.yxj.mvpsample.bean.ResultBean;
 
 import java.util.regex.Pattern;
@@ -108,6 +109,8 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
             }
         });
 
+        etPhone.setText(TestData.PHONE_NUM);
+        etPhone.setSelection(TestData.PHONE_NUM.length());
         presenter = new RegisterPresenterImpl(this);
     }
 
@@ -176,7 +179,7 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
         if (TextUtils.isEmpty(num)) {
             return false;
         }
-        if (Pattern.compile("\\d{13}").matcher(num).matches()) {
+        if (Pattern.compile("\\d{11}").matcher(num).matches()) {
             return true;
         } else {
             return false;
@@ -187,7 +190,7 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
         if (TextUtils.isEmpty(verify)) {
             return false;
         }
-        if (Pattern.compile("\\d{3}").matcher(verify).matches()) {
+        if (Pattern.compile("\\d{"+ TestData.VERIFY.length()+"}").matcher(verify).matches()) {
             return true;
         } else {
             return false;
