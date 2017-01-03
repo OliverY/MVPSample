@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.yxj.mvpsample.R;
 import com.yxj.mvpsample.bean.ResultBean;
@@ -17,6 +18,8 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
     private Button btnLogin;
     private ProgressBar progress;
 
+    private ILoginPresenter mLoginPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,22 +30,23 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
         btnLogin = (Button) findViewById(R.id.btnLogin);
         progress = (ProgressBar) findViewById(R.id.progress);
 
-
+        // 如何去操作P层，实现V——>P的操作？持有Presenter的引用
+        mLoginPresenter = new LoginPresenterImpl(this);
     }
 
     @Override
     public void login(String account, String pwd) {
-
+        mLoginPresenter.login(account,pwd);
     }
 
     @Override
     public void loginSucceed(ResultBean result) {
-
+        Toast.makeText(this,result.getMsg(),Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void loginFailed(ResultBean result) {
-
+        Toast.makeText(this,result.getMsg(),Toast.LENGTH_SHORT).show();
     }
 
     @Override
